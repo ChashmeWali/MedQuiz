@@ -13,20 +13,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Ruby
+      - name: Set up Ruby and Jekyll
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.1
+      - run: gem install jekyll
 
-      - name: Install Jekyll
-        run: gem install jekyll
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.8
 
-      - name: Activate virtual environment
-        run: source /home/nida/MedQuiz/MedQuiz/Menv/bin/activate
+      - name: Create virtual environment
+        run: python -m venv /home/nida/MedQuiz/MedQuiz/Menv
 
-      - name: Set Jekyll environment variable
-        env:
-          JEKYLL_ENV_BIN_PATH: /home/nida/MedQuiz/MedQuiz/Menv/bin/python
+      - name: Activate virtual environment and install dependencies
+        run: |
+          source /home/nida/MedQuiz/MedQuiz/Menv/bin/activate
+          pip install -r MedQuiz/requirements.txt
 
       - name: Build Jekyll site
         run: jekyll build
