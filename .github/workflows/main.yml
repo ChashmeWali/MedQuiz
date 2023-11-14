@@ -36,7 +36,7 @@ jobs:
         run: jekyll build
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-to-github-pages@v7
+        uses: ChashmeWali/deploy-to-gh-pages-action@v1  # Replace ChashmeWali with your GitHub username
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           publish-dir: ./_site
