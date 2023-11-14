@@ -21,7 +21,6 @@ jobs:
       - name: Install Jekyll
         run: gem install jekyll
 
-      # Activate virtual environment
       - name: Activate virtual environment
         run: source /home/nida/MedQuiz/MedQuiz/Menv/bin/activate
 
