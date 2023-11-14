@@ -36,8 +36,12 @@ jobs:
         run: jekyll build
 
       - name: Deploy to GitHub Pages
-        uses: ChashmeWali/deploy-to-gh-pages-action@v1  # Replace ChashmeWali with your GitHub username
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          publish-dir: ./_site
-          site-name: Build and Deploy Jekyll Site
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git checkout --orphan gh-pages
+          git rm -rf .
+          cp -r _site/* .
+          git add .
+          git commit -m "Deploy to GitHub Pages"
+          git push origin gh-pages
