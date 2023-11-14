@@ -1,0 +1,35 @@
+name: Build and Deploy Jekyll Site
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1
+
+      - name: Install Jekyll
+        run: gem install jekyll
+
+      - name: Set Jekyll environment variable
+        env:
+          JEKYLL_ENV_BIN_PATH: /home/nida/MedQuiz/MedQuiz/Menv/bin/python
+
+      - name: Build Jekyll site
+        run: jekyll build
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-to-github-pages@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          publish-dir: ./_site
