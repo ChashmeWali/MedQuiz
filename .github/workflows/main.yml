@@ -21,6 +21,10 @@ jobs:
       - name: Install Jekyll
         run: gem install jekyll
 
+      # Activate virtual environment
+      - name: Activate virtual environment
+        run: source /home/nida/MedQuiz/MedQuiz/Menv/bin/activate
+
       - name: Set Jekyll environment variable
         env:
           JEKYLL_ENV_BIN_PATH: /home/nida/MedQuiz/MedQuiz/Menv/bin/python
@@ -33,3 +37,4 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           publish-dir: ./_site
+          site-name: Build and Deploy Jekyll Site
