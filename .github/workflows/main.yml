@@ -1,0 +1,43 @@
+name: Build and Deploy Jekyll Site
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Ruby and Jekyll
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1
+      - run: gem install jekyll
+
+      - name: Create virtual environment
+        run: |
+          docker run --rm -v $(pwd):/app -w /app python:3.8 python -m venv MedQuiz/Menv
+
+      - name: Activate virtual environment and install dependencies
+        run: |
+          source MedQuiz/Menv/bin/activate
+          pip install -r MedQuiz/requirements.txt
+
+      - name: Build Jekyll site
+        run: jekyll build
+
+      - name: Deploy to GitHub Pages
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git checkout --orphan gh-pages
+          git rm -rf .
+          cp -r _site/* .
+          git add .
+          git commit -m "Deploy to GitHub Pages"
+          git push origin gh-pages
