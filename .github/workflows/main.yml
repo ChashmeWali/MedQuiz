@@ -19,17 +19,13 @@ jobs:
           ruby-version: 3.1
       - run: gem install jekyll
 
-      - name: Set up Python
-        uses: actions/setup-python@v3
-        with:
-          python-version: 3.8
-
       - name: Create virtual environment
-        run: python -m venv /home/nida/MedQuiz/MedQuiz/Menv
+        run: |
+          docker run --rm -v $(pwd):/app -w /app python:3.x python -m venv MedQuiz/Menv
 
       - name: Activate virtual environment and install dependencies
         run: |
-          source /home/nida/MedQuiz/MedQuiz/Menv/bin/activate
+          source MedQuiz/Menv/bin/activate
           pip install -r MedQuiz/requirements.txt
 
       - name: Build Jekyll site
