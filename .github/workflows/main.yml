@@ -21,7 +21,7 @@ jobs:
 
       - name: Create virtual environment
         run: |
-          docker run --rm -v $(pwd):/app -w /app python:3.x python -m venv MedQuiz/Menv
+          docker run --rm -v $(pwd):/app -w /app python:3.8 python -m venv MedQuiz/Menv
 
       - name: Activate virtual environment and install dependencies
         run: |
