@@ -12,7 +12,4 @@ urlpatterns = [
     path('contact', views.contact_view, name='contact'),
     path('terms_and_conditions', views.terms_conditions_view, name='terms_conditions'),
     path('search/users', views.search_users_view, name='search_users'),
-
-
-
 ]
