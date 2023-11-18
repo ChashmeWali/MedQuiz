@@ -8,7 +8,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "MedQuiz/wsgi.py"
+      "dest": "/MedQuiz/wsgi.py"
     }
   ]
 }
