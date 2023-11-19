@@ -71,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'MedQuiz.wsgi.application'
+WSGI_APPLICATION = 'MedQuiz.wsgi.app'
 
 
 # Database
