@@ -58,7 +58,7 @@ ROOT_URLCONF = 'MedQuiz.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR,'templates'],
+        'DIRS': [BASE_DIR/'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'MedQuiz.wsgi.app'
+WSGI_APPLICATION = 'MedQuiz.wsgi.application'
 
 
 # Database
