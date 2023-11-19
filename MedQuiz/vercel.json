@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "wasilLearnDJango/wsgi.py",
+      "src": "MedQuiz/wsgi.py",
       "use": "@vercel/python",
       "config": {
         "maxLambdaSize": "15mb",
@@ -24,7 +24,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "wasilLearnDJango/wsgi.py"
+      "dest": "MedQuiz/wsgi.py"
     }
   ]
 }
